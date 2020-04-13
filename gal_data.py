@@ -116,5 +116,6 @@ def gal_data(names=None, pgc=None, keep_length=False,
     t_desired = Table.from_pandas(pd.merge(df_pgc, df,
                                            on='PGC', how=how))
     if keep_length:
+        t_desired = Table(t_desired, masked=True)
         t_desired['PGC'].mask = (t_desired['PGC'] == -1)
     return t_desired
